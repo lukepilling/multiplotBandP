@@ -21,7 +21,7 @@
 #### main  ::  {optional} title of plot
 
 
-multiPlotBandP <- function(r=stop("Must provide a list of data.frame's of regression results, column.1=Pvals, column.2=Effects\n"),
+multiplotBandP <- function(r=stop("Must provide a list of data.frame's of regression results, column.1=Pvals, column.2=Effects\n"),
                            labs=stop("Must provide a vector of labels that correspond to the data.frame's in list [r]\n"),
                            main="Comparison of results from regression screens"
                           )
