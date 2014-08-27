@@ -12,7 +12,7 @@ It is recommended you transform the P-values prior to inputting to the function,
 
 ## Inputs/options
 * r     ::  {REQUIRED} must be a "list" of data.frame's, each data.frame must have two columns; P-values and Estimates
-* labs  ::  {REQUIRED} title of plot
+* labs  ::  {REQUIRED} labels for the individuals analyses; must be of same length as number of data.frame's
 * main  ::  {optional} title of plot
 
 ## Example
