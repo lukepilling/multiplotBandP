@@ -44,7 +44,7 @@ r.lab <- c("Analysis.1", "Analysis.2", "Analysis.3", "Analysis.4")
 ## create plot
 png("random.plot.png", width=700, height=700)
 
-multiPlotBandP( r , r.lab )
+multiplotBandP( r , r.lab )
 
 dev.off()
 ```
