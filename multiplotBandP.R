@@ -17,11 +17,11 @@
 #### Inputs/options
 #### ==============
 #### r     ::  {REQUIRED} must be a "list" of data.frame's, each data.frame must have two columns; P-values and Estimates
-#### labs  ::  {REQUIRED} labels for the individuals analyses; must be of same length as number of data.frame's
+#### labs  ::  {REQUIRED} title of plot
 #### main  ::  {optional} title of plot
 
 
-multiplotBandP <- function(r=stop("Must provide a list of data.frame's of regression results, column.1=Pvals, column.2=Effects\n"),
+multiPlotBandP <- function(r=stop("Must provide a list of data.frame's of regression results, column.1=Pvals, column.2=Effects\n"),
                            labs=stop("Must provide a vector of labels that correspond to the data.frame's in list [r]\n"),
                            main="Comparison of results from regression screens"
                           )
@@ -42,8 +42,8 @@ multiplotBandP <- function(r=stop("Must provide a list of data.frame's of regres
     #### set-up plotting parameters
     op <- par(no.readonly = TRUE)
     par(mfrow = c(length(r), length(r)))
-    par(mar = c(1.7, 1.7, 0, 0.7))
-    par(mgp = c(1.7, 0.7, 0))       ## This accepts a vector of 3 elements specifying the distance in text lines between the  
+    par(mar = c(1.5, 1.5, 0, 0.5))
+    par(mgp = c(1.5, 0.5, 0))       ## This accepts a vector of 3 elements specifying the distance in text lines between the  
                                     ##   figure (data area) margin and the axis title, axis labels and axis line respectively
     par(oma = c(0, 0, 4, 0))        ## outer margin for title
     
@@ -66,7 +66,7 @@ multiplotBandP <- function(r=stop("Must provide a list of data.frame's of regres
             y <- r[[i]][,2]
           }
                     
-          plot(1, xlab="", ylab="", main="", axes=T, cex.axis = 0.9, xlim=c(min(makeOK(x)),max(makeOK(x))), ylim=c(min(makeOK(y)),max(makeOK(y))) )
+          plot(1, xlab="", ylab="", main="", axes=F, cex.axis = 0.9, xlim=c(min(makeOK(x)),max(makeOK(x))), ylim=c(min(makeOK(y)),max(makeOK(y))) )
           rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col ="grey97")
           abline(a=0, b=1, lty=2, col="grey60")
             
@@ -74,6 +74,22 @@ multiplotBandP <- function(r=stop("Must provide a list of data.frame's of regres
           {
             abline(h=0, lty=2, col="grey60")
     	    abline(v=0, lty=2, col="grey60")
+    	    
+    	    ## if "first" plot in the row then add "left" and "bottom" axis values
+    	    if (j == (i+1))  
+    	    {
+    	      axis(1)
+    	      axis(2)
+    	    }
+          }  else  
+          {
+    	    ## if "last" plot in the row then add "right" and "top" axis values
+    	    if (j == (i-1))  
+    	    {
+    	      axis(3)
+    	      axis(4)
+    	    }
+            
           }
           
           points( x, y, cex = 0.4, pch = 16 )
