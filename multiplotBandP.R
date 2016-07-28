@@ -1,6 +1,8 @@
 ##################################################################################################################
 #### Function to create a series of plots to compare a number of parallel regression screens to one another
-#### Luke Pilling
+#### Luke C. Pilling  --  L.Pilling@exeter.ac.uk
+####
+#### v 0.160728
 
 #### Description
 #### =====
@@ -69,11 +71,12 @@ multiPlotBandP <- function(r=stop("Must provide a list of data.frame's of regres
           plot.new()
           legend("center", labs[i], col="black", ncol=1, bty ="n", cex=1.5)
           
-          coefLab <- "Coefficients"
-          if (z.score)  coefLab <- paste(coefLab, "(Z-score)", sep=" ")
+          coefLab <- "Effect size"
+          if (z.score)  coefLab <- paste(coefLab, "(Z-scored)", sep=" ")
           legend("topright", coefLab, col="black", ncol=1, bty ="n", cex=1.1)
           
-          pvalLab <- "P-values (-log10)"
+          pvalLab <- "P-values"
+          if (neg.log)  pvalLab <- paste(pvalLab, "(-log10)", sep=" ")
           legend("bottomleft", pvalLab, col="black", ncol=1, bty ="n", cex=1.1)          
         }  else  
         {
