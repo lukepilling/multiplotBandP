@@ -53,4 +53,4 @@ multiplotBandP( r,           ## provide list of data.frames (one per analysis)
 
 dev.off()
 ```
-![](http://s15.postimg.org/n1nyfnafv/random_plot.png)
+![](https://github.com/lukepilling/multiplotBandP/blob/master/multiplotBandP.example.png?raw=true)
